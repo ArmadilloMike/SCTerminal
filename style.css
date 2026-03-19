@@ -28,4 +28,7 @@ h1 {
 .topbar{
     display: flex;
     justify-content: space-between;
+    background-color: black;
+    color: #007e00;
+    font-weight: bold;
 }
