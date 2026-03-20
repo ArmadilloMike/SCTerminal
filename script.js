@@ -70,15 +70,7 @@ function openWindow(element) {
     element.style.display = element.dataset.prevDisplay || "block";
 }
 
-welcomeScreenClose.addEventListener("click", function () {
-    closeWindow(welcomeScreen)
-})
-welcomeScreenOpen.addEventListener("click", function () {
-    openWindow(welcomeScreen)
-})
-reportScreenClose.addEventListener("click", function () {
-    closeWindow(welcomeScreen)
-})
-reportScreenOpen.addEventListener("click", function () {
-    openWindow(welcomeScreen)
-})
+welcomeScreenClose.addEventListener("click", function () {closeWindow(welcomeScreen)})
+welcomeScreenOpen.addEventListener("click", function () {openWindow(welcomeScreen)})
+reportScreenClose.addEventListener("click", function () {closeWindow(reportScreen)})
+reportScreenOpen.addEventListener("click", function () {openWindow(reportScreen)})
