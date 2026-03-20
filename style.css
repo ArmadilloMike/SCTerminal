@@ -33,6 +33,7 @@ h1 {
 .appgrid {
     padding-top: 64px;
     padding-left: 16px;
+    user-select: none;
 }
 .appicon {
     text-align: center;
@@ -103,4 +104,28 @@ h1 {
 #welcome p {
     font-size: 13px;
     line-height: 1.5;
+}
+#report {
+    display: none;
+    width: 520px;
+}
+#reportEditor {
+    width: 100%;
+    height: 400px;
+    background: #111;
+    color: #0f0;
+    border: 1px solid #333;
+    font-family: "JetBrains Mono", monospace;
+    padding: 12px;
+    resize: none;
+}
+.topbuttons {
+    padding-left: 10px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    background-color: #081408;
+}
+.topbuttons button {
+    color: #00b300;
+    background-color: #174317;
 }

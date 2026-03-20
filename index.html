@@ -10,7 +10,7 @@
 
 </head>
 <body>
-    <div class="topbar">
+    <div class="topbar" id="topbar">
         <p>
             SC Terminal Interface
         </p>
@@ -35,9 +35,11 @@
             <p>report creator</p>
             <p style="cursor: pointer" id="reportclose">[X]</p>
         </div>
-        <h1>Welcome to the Solari Co. Terminal Interface</h1>
-        <h2>Introduction</h2>
-        <p>Welcome OMEGA-BLACK</p>
+        <div class="topbuttons">
+            <button id="reportSave">Save</button>
+            <button id="reportNew">New Report</button>
+        </div>
+        <label for="reportEditor"></label><textarea id="reportEditor"></textarea>
     </div>
     <div class="appgrid">
         <div class="appicon" id="welcomeopen">
