@@ -10,25 +10,75 @@ body {
 }
 .slogo {
     width: 64px;
-    height: 64px
+    height: 64px;
+    display: block;
+    margin: 12px auto 4px;
+    filter: drop-shadow(0 0  6px rgba(0, 255, 0, 0.25));
 }
 h1 {
     margin: 4px;
     padding: 4px;
 }
 .intro {
-    border: solid;
-    width: 400px;
-    padding: 20px;
+    border: 1px solid #1f6b1f;
+    width: 420px;
+    padding: 0;
     position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%,-50%);
+    background: rgba(2, 12, 2, 0.92);
+    box-shadow: 0 0 18px rgba(0, 255, 0, 0.18);
+    color: #9cff9c;
+    overflow: hidden;
+    text-shadow: 0 0 4px rgba(0, 255, 0, 0.18);
 }
 .topbar{
     display: flex;
     justify-content: space-between;
-    background-color: black;
-    color: #007e00;
+    background-color: #020802;
+    color: #00b300;
     font-weight: bold;
+    border-bottom: 1px solid #1f6b1f;
+    padding: 4px 10px;
+    font-size: 12px;
+    user-select: none;
+}
+.header {
+    padding: 8px 12px;
+    cursor: move;
+    z-index: 10;
+    background: linear-gradient(to bottom, #081408, #020802);
+    color: #00b300;
+    border-bottom: 1px solid #1f6b1f;
+    font-size: 12px;
+    letter-spacing: 0.08em;
+    user-select: none;
+}
+#welcome{
+    position: absolute;
+    z-index: 9;
+    text-align: left;
+}
+#welcomeheader{
+
+}
+#welcome h1,
+#welcome h2,
+#welcome p {
+    margin: 0;
+    padding: 8px 12px;
+}
+#welcome h1 {
+    font-size: 16px;
+    color: #d8ffd8;
+}
+#welcome h2 {
+    font-size: 13px;
+    color: #6bff6b;
+    border-top: 1px solid rgba(31, 107, 31, 0.5);
+}
+#welcome p {
+    font-size: 13px;
+    line-height: 1.5;
 }
