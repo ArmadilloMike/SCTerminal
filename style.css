@@ -19,20 +19,6 @@ h1 {
     margin: 4px;
     padding: 4px;
 }
-.intro {
-    border: 1px solid #1f6b1f;
-    width: 420px;
-    padding: 0;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%,-50%);
-    background: rgba(2, 12, 2, 0.92);
-    box-shadow: 0 0 18px rgba(0, 255, 0, 0.18);
-    color: #9cff9c;
-    overflow: hidden;
-    text-shadow: 0 0 4px rgba(0, 255, 0, 0.18);
-}
 .topbar{
     display: flex;
     justify-content: space-between;
@@ -43,6 +29,27 @@ h1 {
     padding: 4px 10px;
     font-size: 12px;
     user-select: none;
+}
+.appgrid {
+    padding-top: 64px;
+    padding-left: 16px;
+}
+.appicon {
+    text-align: center;
+    padding: 16px;
+    filter: drop-shadow(0 0 8px black);
+    width: fit-content;
+    cursor: pointer;
+}
+.appicon img {
+    width: 58px;
+    height: 58px;
+    border-radius: 8px;
+}
+.appicon p {
+    margin: 0;
+    color: #00b300;
+    font-size: small;
 }
 .header {
     padding: 8px 12px;
@@ -59,6 +66,20 @@ h1 {
     align-items: center;
 }
 .header p { margin: 0 }
+.intro {
+    border: 1px solid #1f6b1f;
+    width: 420px;
+    padding: 0;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    background: rgba(2, 12, 2, 0.92);
+    box-shadow: 0 0 18px rgba(0, 255, 0, 0.18);
+    color: #9cff9c;
+    overflow: hidden;
+    text-shadow: 0 0 4px rgba(0, 255, 0, 0.18);
+}
 #welcome{
     position: absolute;
     z-index: 9;

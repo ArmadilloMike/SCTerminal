@@ -10,6 +10,7 @@ setInterval(updateTime,1000)
 
 // Make the DIV element draggable:
 dragElement(document.querySelector("#welcome"));
+dragElement(document.querySelector("#report"));
 
 function dragElement(elmnt) {
     var pos1 = 0, pos2 = 0, pos3 = 0, pos4 = 0;
@@ -57,6 +58,9 @@ function dragElement(elmnt) {
 var welcomeScreen = document.querySelector("#welcome")
 var welcomeScreenClose = document.querySelector("#welcomeclose")
 var welcomeScreenOpen = document.querySelector("#welcomeopen")
+var reportScreen = document.querySelector("#report")
+var reportScreenClose = document.querySelector("#reportclose")
+var reportScreenOpen = document.querySelector("#reportopen")
 
 function closeWindow(element) {
     element.dataset.prevDisplay = getComputedStyle(element).display;
@@ -70,5 +74,11 @@ welcomeScreenClose.addEventListener("click", function () {
     closeWindow(welcomeScreen)
 })
 welcomeScreenOpen.addEventListener("click", function () {
+    openWindow(welcomeScreen)
+})
+reportScreenClose.addEventListener("click", function () {
+    closeWindow(welcomeScreen)
+})
+reportScreenOpen.addEventListener("click", function () {
     openWindow(welcomeScreen)
 })
