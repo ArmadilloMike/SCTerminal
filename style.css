@@ -124,6 +124,7 @@ h1 {
     padding-top: 5px;
     padding-bottom: 5px;
     background-color: #081408;
+    user-select: none;
 }
 .topbuttons button,
 .button-label {
@@ -134,4 +135,5 @@ h1 {
     background: #103010;
     color: #00b300;
     cursor: pointer;
+    user-select: none;
 }
