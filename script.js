@@ -203,6 +203,18 @@ document.getElementById("reportSave").addEventListener("click", () => {
 
     URL.revokeObjectURL(url)
 })
+// open button
+document.getElementById('reportOpenFile').addEventListener("change", function (event) {
+    var file = event.target.files[0]
+    var editor = document.getElementById("reportEditor")
+    if (file) {
+        const reader = new FileReader()
+        reader.onload = function (e) {
+            editor.value = e.target.result
+        }
+        reader.readAsText(file)
+    }
+})
 
 // helper functions
 function makeClosable(element) {

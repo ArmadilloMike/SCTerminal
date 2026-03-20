@@ -125,7 +125,13 @@ h1 {
     padding-bottom: 5px;
     background-color: #081408;
 }
-.topbuttons button {
+.topbuttons button,
+.button-label {
+    font: inherit;
+    display: inline-block;
+    padding: 8px 14px;
+    border: 1px solid #00b300;
+    background: #103010;
     color: #00b300;
-    background-color: #174317;
+    cursor: pointer;
 }
