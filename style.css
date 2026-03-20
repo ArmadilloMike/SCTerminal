@@ -54,14 +54,15 @@ h1 {
     font-size: 12px;
     letter-spacing: 0.08em;
     user-select: none;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
+.header p { margin: 0 }
 #welcome{
     position: absolute;
     z-index: 9;
     text-align: left;
-}
-#welcomeheader{
-
 }
 #welcome h1,
 #welcome h2,

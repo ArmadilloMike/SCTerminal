@@ -51,3 +51,24 @@ function dragElement(elmnt) {
         document.onmousemove = null;
     }
 }
+
+
+// Add opening and closing of windows
+var welcomeScreen = document.querySelector("#welcome")
+var welcomeScreenClose = document.querySelector("#welcomeclose")
+var welcomeScreenOpen = document.querySelector("#welcomeopen")
+
+function closeWindow(element) {
+    element.dataset.prevDisplay = getComputedStyle(element).display;
+    element.style.display = "none";
+}
+function openWindow(element) {
+    element.style.display = element.dataset.prevDisplay || "block";
+}
+
+welcomeScreenClose.addEventListener("click", function () {
+    closeWindow(welcomeScreen)
+})
+welcomeScreenOpen.addEventListener("click", function () {
+    openWindow(welcomeScreen)
+})
