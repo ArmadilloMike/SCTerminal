@@ -59,8 +59,13 @@ function closeWindow(element) {
     element.style.display = "none";
 }
 function openWindow(element) {
-    element.style.display = element.dataset.prevDisplay || "block";
-    biggestIndex ++;
+    if (element.id === "quote") {
+        element.style.display = "flex";
+    } else {
+        element.style.display = element.dataset.prevDisplay || "block";
+    }
+
+    biggestIndex++;
     element.style.zIndex = biggestIndex;
     topBar.style.zIndex = biggestIndex + 1;
 }
@@ -216,6 +221,24 @@ document.getElementById('reportOpenFile').addEventListener("change", function (e
     }
 })
 
+// quote sections functions
+var filters = document.querySelectorAll(".quote-filter")
+var groups = document.querySelectorAll(".quote-group")
+
+filters.forEach(button => {
+    button.addEventListener("click", () => {
+        var target = button.dataset.target
+        
+        groups.forEach(group => {
+            if (target === "all" || group.dataset.group === target) {
+                group.style.display = "block";
+            } else {
+                group.style.display = "none"
+            }
+        })
+    })
+})
+
 // helper functions
 function makeClosable(element) {
     var openButton = document.querySelector("#" + element.id +"open")
@@ -236,6 +259,7 @@ function initializeWindow(element) {
 }
 initializeWindow("welcome")
 initializeWindow("report")
+initializeWindow("quote")
 
 //other functions
 
