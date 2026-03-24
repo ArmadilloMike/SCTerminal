@@ -59,7 +59,7 @@ function closeWindow(element) {
     element.style.display = "none";
 }
 function openWindow(element) {
-    if (element.id === "quote" || element.id === "edd") {
+    if (element.id === "quote" || element.id === "edd" ) {
         element.style.display = "flex";
     } else {
         element.style.display = element.dataset.prevDisplay || "block";
@@ -280,8 +280,10 @@ initializeWindow("welcome")
 initializeWindow("report")
 initializeWindow("quote")
 initializeWindow("edd")
+initializeWindow("orientation")
 
 setupSidebarFilters(".quote-filter", ".quote-group")
 setupSidebarFilters(".edd-filter", ".edd-group", false)
+setupSidebarFilters(".ore-filter", ".ore-group", false)
 
 
