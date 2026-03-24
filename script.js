@@ -59,7 +59,7 @@ function closeWindow(element) {
     element.style.display = "none";
 }
 function openWindow(element) {
-    if (element.id === "quote") {
+    if (element.id === "quote" || element.id === "edd") {
         element.style.display = "flex";
     } else {
         element.style.display = element.dataset.prevDisplay || "block";
@@ -221,23 +221,6 @@ document.getElementById('reportOpenFile').addEventListener("change", function (e
     }
 })
 
-// quote sections functions
-var filters = document.querySelectorAll(".quote-filter")
-var groups = document.querySelectorAll(".quote-group")
-
-filters.forEach(button => {
-    button.addEventListener("click", () => {
-        var target = button.dataset.target
-        
-        groups.forEach(group => {
-            if (target === "all" || group.dataset.group === target) {
-                group.style.display = "block";
-            } else {
-                group.style.display = "none"
-            }
-        })
-    })
-})
 
 // helper functions
 function makeClosable(element) {
@@ -257,10 +240,48 @@ function initializeWindow(element) {
     makeClosable(screen)
     dragElement(screen)
 }
+function setupSidebarFilters(buttonSelector, groupSelector, showAll=true) {
+    var buttons = document.querySelectorAll(buttonSelector)
+    var groups = document.querySelectorAll(groupSelector)
+    
+    if (groups.length > 0) {
+        groups.forEach((group, index) => {
+            group.style.display = index === 0 ? "block": "none"
+        })
+    }
+    
+    buttons.forEach(button => {
+        button.addEventListener("click" ,() => {
+            var target = button.dataset.target
+            if (showAll === true) {
+                groups.forEach(group => {
+                    if (target === "all" || group.dataset.group === target) {
+                        group.style.display = "block"
+                    } else {
+                        group.style.display = "none"
+                    }
+                })
+            } else {
+                groups.forEach(group => {
+                    if (group.dataset.group === target) {
+                        group.style.display = "block"
+                    } else {
+                        group.style.display = "none"
+                    }
+                })
+            }
+        })
+    })
+}
+
+
+// window creation
 initializeWindow("welcome")
 initializeWindow("report")
 initializeWindow("quote")
+initializeWindow("edd")
 
-//other functions
+setupSidebarFilters(".quote-filter", ".quote-group")
+setupSidebarFilters(".edd-filter", ".edd-group", false)
 
 
