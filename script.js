@@ -59,7 +59,7 @@ function closeWindow(element) {
     element.style.display = "none";
 }
 function openWindow(element) {
-    if (element.id === "quote" || element.id === "edd" ) {
+    if (element.id === "quote" || element.id === "edd" || element.id === "orientation") {
         element.style.display = "flex";
     } else {
         element.style.display = element.dataset.prevDisplay || "block";

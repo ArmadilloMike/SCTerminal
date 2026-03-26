@@ -136,7 +136,7 @@ button {
   width: 420px;
   padding: 0;
   transform: translate(-50%, -50%);
-  overflow: hidden;
+  overflow: auto;
   background: rgba(2, 12, 2, 0.92);
   color: #9cff9c;
   border: 1px solid #1f6b1f;
@@ -167,15 +167,15 @@ button {
 }
 
 .bullet-point {
-    list-style-type: square;
+  list-style-type: square;
 }
 
 .sidebar {
-    width: 130px;
-    flex-shrink: 0;
-    padding: 10px 12px 0;
-    border-right: 1px solid #444;
-    overflow-y: auto;
+  width: 130px;
+  flex-shrink: 0;
+  padding: 10px 12px 0;
+  border-right: 1px solid #444;
+  overflow-y: auto;
 }
 
 /* Report editor */
@@ -250,6 +250,34 @@ button {
 }
 
 .edd-layout {
+  display: flex;
+  gap: 16px;
+  height: 100%;
+  min-height: 0;
+}
+
+/* ORE Window */
+
+#orientation {
+  display: none;
+  flex-direction: column;
+  width: 800px;
+  height: 500px;
+  overflow: hidden;
+}
+
+#orientationheader {
+  flex: 0 0 auto;
+}
+
+.sections {
+  flex: 1;
+  min-height: 0;
+  overflow-y: auto;
+  padding: 12px 12px 24px;
+}
+
+.ore-layout {
   display: flex;
   gap: 16px;
   height: 100%;
