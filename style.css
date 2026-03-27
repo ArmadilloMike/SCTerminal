@@ -21,7 +21,7 @@ p {
 button {
   font: inherit;
   display: inline-block;
-  padding: 8px 14px;
+  padding: 5px 14px;
   border: 1px solid #00b300;
   background: #103010;
   color: #00b300;
@@ -223,10 +223,15 @@ button {
 }
 
 .quote-filter,
-.edd-filter {
+.edd-filter,
+.ore-filter{
   display: block;
   width: 100%;
+  box-sizing: border-box;
+  white-space: normal;
+  text-align: left;
   margin-bottom: 8px;
+  padding-left: 5px;
 }
 
 /* EDD window */
