@@ -59,7 +59,7 @@ function closeWindow(element) {
     element.style.display = "none";
 }
 function openWindow(element) {
-    if (element.id === "quote" || element.id === "edd" || element.id === "orientation") {
+    if (element.id === "quote" || element.id === "edd" || element.id === "orientation" || element.id === "project") {
         element.style.display = "flex";
     } else {
         element.style.display = element.dataset.prevDisplay || "block";
@@ -281,9 +281,11 @@ initializeWindow("report")
 initializeWindow("quote")
 initializeWindow("edd")
 initializeWindow("orientation")
+initializeWindow("project")
 
-setupSidebarFilters(".quote-filter", ".quote-group")
+setupSidebarFilters(".quote-filter", ".quote-group", true)
 setupSidebarFilters(".edd-filter", ".edd-group", false)
 setupSidebarFilters(".ore-filter", ".ore-group", false)
+setupSidebarFilters(".project-filter", ".project-group", false)
 
 
