@@ -283,11 +283,13 @@ initializeWindow("edd")
 initializeWindow("orientation")
 initializeWindow("project")
 initializeWindow("anomaly")
+initializeWindow("logistics")
 
 setupSidebarFilters(".quote-filter", ".quote-group", true)
 setupSidebarFilters(".edd-filter", ".edd-group", false)
 setupSidebarFilters(".ore-filter", ".ore-group", false)
 setupSidebarFilters(".project-filter", ".project-group", false)
 setupSidebarFilters(".anomaly-filter", ".anomaly-group", false)
+setupSidebarFilters(".logistics-filter", ".logistics-group", false)
 
 
