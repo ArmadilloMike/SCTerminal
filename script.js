@@ -112,6 +112,21 @@ II. {SECTION II}
 SOLARI CO.
 {QUOTE FROM QUOTE LIST}
     `
+    const uptimeEl = document.getElementById("welcomeUptime")
+    if (uptimeEl) {
+        const startedAt = Date.now()
+
+        const formatUptime = () => {
+            const totalSeconds = Math.floor((Date.now() - startedAt) / 1000)
+            const hours = String(Math.floor(totalSeconds / 3600)).padStart(2, "0")
+            const minutes = String(Math.floor((totalSeconds % 3600) / 60)).padStart(2, "0")
+            const seconds = String(totalSeconds % 60).padStart(2, "0")
+            uptimeEl.textContent = `${hours}h ${minutes}m ${seconds}s`
+        }
+
+        formatUptime()
+        setInterval(formatUptime, 1000)
+    }
 
 })
 // new report button

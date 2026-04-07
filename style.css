@@ -144,28 +144,6 @@ button {
   text-shadow: 0 0 4px rgba(0, 255, 0, 0.18);
 }
 
-#welcome {
-  position: absolute;
-  z-index: 9;
-  text-align: left;
-}
-
-#welcome h1 {
-  font-size: 16px;
-  color: #d8ffd8;
-}
-
-#welcome h2 {
-  font-size: 13px;
-  color: #6bff6b;
-  border-top: 1px solid rgba(31, 107, 31, 0.5);
-}
-
-#welcome p {
-  font-size: 13px;
-  line-height: 1.5;
-}
-
 .bullet-point {
   list-style-type: square;
 }
@@ -176,6 +154,77 @@ button {
   padding: 10px 12px 0;
   border-right: 1px solid #444;
   overflow-y: auto;
+}
+
+/* Welcome Window */
+
+#welcome {
+  position: absolute;
+  z-index: 9;
+  text-align: left;
+  width: 600px;
+}
+
+.welcome-neofetch {
+  display: flex;
+  gap: 18px;
+  align-items: flex-start;
+  padding: 16px 18px 18px;
+}
+
+.welcome-logo {
+  margin: 0;
+  padding: 0;
+  width: fit-content;
+  color: #00b300;
+  font-size: 12px;
+  line-height: 1.05;
+  white-space: pre;
+  text-shadow: 0 0 6px rgba(0, 255, 0, 0.18);
+  user-select: none;
+}
+
+.welcome-info {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  padding-top: 2px;
+  min-width: 280px;
+}
+
+#welcome h1 {
+  margin: 0 0 6px;
+  padding: 0;
+  font-size: 18px;
+  color: #d8ffd8;
+  letter-spacing: 0.02em;
+}
+
+.welcome-info p {
+  margin: 0;
+  padding: 0;
+  font-size: 13px;
+  line-height: 1.35;
+  white-space: nowrap;
+}
+
+.welcome-key {
+  color: #6bff6b;
+  font-weight: 700;
+  display: inline-block;
+  width: 72px;
+}
+
+.welcome-divider {
+  height: 1px;
+  margin: 6px 0 4px;
+  background: linear-gradient(to right, rgba(0, 179, 0, 0.75), rgba(0, 179, 0, 0.05));
+}
+
+.welcome-footer {
+  margin-top: 4px;
+  color: #9cff9c;
+  opacity: 0.9;
 }
 
 /* Report editor */
