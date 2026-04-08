@@ -1,3 +1,27 @@
+const editorTextValue = `SOLARI CO. | {DEPARTMENT}
+{TITLE}
+
+Clearance Level: {REQUIRED CLEARANCE LEVEL}
+Prepared For: {IF NEEDED}
+Compiled By: {TIER-COLOR}
+Reference: {INCLUDE IF NEEDED}
+
+{SINGLE SMALL PARAGRAPH SUMMARIZING THE REPORT}
+
+{MAIN BODY}
+
+I. {SECTION I}
+Cras ut augue at arcu accumsan congue sit amet non.
+Vestibulum pellentesque metus: Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed sagittis porta pulvinar. Suspendisse potenti. Curabitur maximus massa at congue venenatis.
+Donec nec tristique: Aliquam at ultrices nulla. Pellentesque convallis finibus cursus. Integer quis egestas massa. Pellentesque at lobortis enim.
+
+II. {SECTION II}
+{ADD MORE SECTIONS IF NEEDED
+
+SOLARI CO.
+{QUOTE FROM QUOTE LIST}
+    `
+
 function updateTime() {
     var currentTime = new Date().toLocaleTimeString(undefined, {
         hour12: false
@@ -59,7 +83,7 @@ function closeWindow(element) {
     element.style.display = "none";
 }
 function openWindow(element) {
-    if (element.id === "quote" || element.id === "edd" || element.id === "orientation" || element.id === "project" || element.id === "anomaly") {
+    if (element.id === "quote" || element.id === "edd" || element.id === "orientation" || element.id === "project" || element.id === "anomaly" || element.id === "logistics") {
         element.style.display = "flex";
     } else {
         element.style.display = element.dataset.prevDisplay || "block";
@@ -89,29 +113,7 @@ function handleWindowTap(element) {
 window.addEventListener("DOMContentLoaded", () => {
     const editor = document.getElementById("reportEditor")
 
-    editor.value = `SOLARI CO. | {DEPARTMENT}
-{TITLE}
-
-Clearance Level: {REQUIRED CLEARANCE LEVEL}
-Prepared For: {IF NEEDED}
-Compiled By: {TIER-COLOR}
-Reference: {INCLUDE IF NEEDED}
-
-{SINGLE SMALL PARAGRAPH SUMMARIZING THE REPORT}
-
-{MAIN BODY}
-
-I. {SECTION I}
-Cras ut augue at arcu accumsan congue sit amet non.
-Vestibulum pellentesque metus: Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed sagittis porta pulvinar. Suspendisse potenti. Curabitur maximus massa at congue venenatis.
-Donec nec tristique: Aliquam at ultrices nulla. Pellentesque convallis finibus cursus. Integer quis egestas massa. Pellentesque at lobortis enim.
-
-II. {SECTION II}
-{ADD MORE SECTIONS IF NEEDED
-
-SOLARI CO.
-{QUOTE FROM QUOTE LIST}
-    `
+    editor.value = editorTextValue
     const uptimeEl = document.getElementById("welcomeUptime")
     if (uptimeEl) {
         const startedAt = Date.now()
@@ -133,80 +135,14 @@ SOLARI CO.
 var newReportBut = document.querySelector("#reportNew")
 newReportBut.addEventListener("mousedown", () => {
     var editor = document.getElementById("reportEditor")
-    var text = `SOLARI CO. | {DEPARTMENT}
-{TITLE}
-
-Clearance Level: {REQUIRED CLEARANCE LEVEL}
-Prepared For: {IF NEEDED}
-Compiled By: {TIER-COLOR}
-Reference: {INCLUDE IF NEEDED}
-
-{SINGLE SMALL PARAGRAPH SUMMARIZING THE REPORT}
-
-{MAIN BODY}
-
-I. {SECTION I}
-Cras ut augue at arcu accumsan congue sit amet non.
-Vestibulum pellentesque metus: Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed sagittis porta pulvinar. Suspendisse potenti. Curabitur maximus massa at congue venenatis.
-Donec nec tristique: Aliquam at ultrices nulla. Pellentesque convallis finibus cursus. Integer quis egestas massa. Pellentesque at lobortis enim.
-
-II. {SECTION II}
-{ADD MORE SECTIONS IF NEEDED
-
-SOLARI CO.
-{QUOTE FROM QUOTE LIST}
-    `
+    var text = editorTextValue
     if (editor.value === text) {
-        editor.value = `SOLARI CO. | {DEPARTMENT}
-{TITLE}
-
-Clearance Level: {REQUIRED CLEARANCE LEVEL}
-Prepared For: {IF NEEDED}
-Compiled By: {TIER-COLOR}
-Reference: {INCLUDE IF NEEDED}
-
-{SINGLE SMALL PARAGRAPH SUMMARIZING THE REPORT}
-
-{MAIN BODY}
-
-I. {SECTION I}
-Cras ut augue at arcu accumsan congue sit amet non.
-Vestibulum pellentesque metus: Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed sagittis porta pulvinar. Suspendisse potenti. Curabitur maximus massa at congue venenatis.
-Donec nec tristique: Aliquam at ultrices nulla. Pellentesque convallis finibus cursus. Integer quis egestas massa. Pellentesque at lobortis enim.
-
-II. {SECTION II}
-{ADD MORE SECTIONS IF NEEDED
-
-SOLARI CO.
-{QUOTE FROM QUOTE LIST}
-    `
+        editor.value = editorTextValue
     } else if (editor.value !== text) {
         var userConfirmed = confirm("There are changes. Are you sure you want to create a new report?")
 
         if (userConfirmed) {
-            editor.value = `SOLARI CO. | {DEPARTMENT}
-{TITLE}
-
-Clearance Level: {REQUIRED CLEARANCE LEVEL}
-Prepared For: {IF NEEDED}
-Compiled By: {TIER-COLOR}
-Reference: {INCLUDE IF NEEDED}
-
-{SINGLE SMALL PARAGRAPH SUMMARIZING THE REPORT}
-
-{MAIN BODY}
-
-I. {SECTION I}
-Cras ut augue at arcu accumsan congue sit amet non.
-Vestibulum pellentesque metus: Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed sagittis porta pulvinar. Suspendisse potenti. Curabitur maximus massa at congue venenatis.
-Donec nec tristique: Aliquam at ultrices nulla. Pellentesque convallis finibus cursus. Integer quis egestas massa. Pellentesque at lobortis enim.
-
-II. {SECTION II}
-{ADD MORE SECTIONS IF NEEDED
-
-SOLARI CO.
-{QUOTE FROM QUOTE LIST}
-    `
+            editor.value = editorTextValue
         }
     }
 })
