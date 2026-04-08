@@ -74,14 +74,15 @@ function dragElement(elmnt) {
     }
 }
 
-
 // Add opening and closing of windows
-var topBar = document.querySelector("#topbar")
+const topBar = document.querySelector("#topbar");
 
 function closeWindow(element) {
     element.dataset.prevDisplay = getComputedStyle(element).display;
     element.style.display = "none";
 }
+let biggestIndex;
+
 function openWindow(element) {
     if (element.id === "quote" || element.id === "edd" || element.id === "orientation" || element.id === "project" || element.id === "anomaly" || element.id === "logistics") {
         element.style.display = "flex";
@@ -95,7 +96,7 @@ function openWindow(element) {
 }
 
 // Add it so windows rise to the top when clicked
-var biggestIndex = 1;
+biggestIndex = 1;
 
 function addWindowTapHandling(element) {
     element.addEventListener("mousedown", () =>
@@ -220,6 +221,9 @@ function setupSidebarFilters(buttonSelector, groupSelector, showAll=true) {
                         group.style.display = "none"
                     }
                 })
+            }
+            if (groups.length > 0) {
+                groups[0].parentElement.scrollTop = 0;
             }
         })
     })
