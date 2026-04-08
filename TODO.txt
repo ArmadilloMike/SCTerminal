@@ -1,7 +1,8 @@
 DONE: extract the editor content variable to a js constant for less repetition
-DONE1: replace the Logo file with a svg
+DONE: replace the Logo file with a svg
 TODO: make it so if you click on a new section, you scroll back to the top
-TODO: make a custom scrollbar
+DONE make a custom scrollbar
 TODO: make it a bit less static e.g.: static effects in the front
 TODO: make it so the column size changes
 TODO: add a terminal window which can be used to access hidden files
+TODO: create new icons for the appicons

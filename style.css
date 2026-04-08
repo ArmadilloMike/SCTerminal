@@ -58,6 +58,27 @@ button {
   user-select: none;
 }
 
+/* Scroll Bar */
+  /*Firefox*/
+* {
+  scrollbar-width: auto;
+  scrollbar-color: #00b300 #111111;
+}
+  /* Other Browser */
+*::-webkit-scrollbar {
+  width: 17px;
+}
+
+*::-webkit-scrollbar-track {
+  background: #111111;
+}
+
+*::-webkit-scrollbar-thumb {
+  background-color: #00b300;
+  border-radius: 10px;
+  border: 12px none #73ff00;
+}
+
 /* Branding and top bar */
 .slogo {
   display: block;
