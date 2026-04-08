@@ -1,6 +1,6 @@
 DONE: extract the editor content variable to a js constant for less repetition
 DONE: replace the Logo file with a svg
-TODO: make it so if you click on a new section, you scroll back to the top
+DONE: make it so if you click on a new section, you scroll back to the top
 DONE make a custom scrollbar
 TODO: make it a bit less static e.g.: static effects in the front
 TODO: make it so the column size changes
