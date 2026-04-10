@@ -178,10 +178,12 @@ const terminalOutput = document.getElementById("terminalOutput")
 const terminalInput = document.getElementById("terminalInput")
 
 const fileSystem = {
-    ".hidden": "This is a hidden directory",
-    ".config": "Configuration files",
-    ".secrets": "[ACCESS DENIED]",
-    ".archive": "Old project files",
+    ".hidden": { type: "text", content: "This is a hidden directory"},
+    ".config": { type: "text", content: "Configuration files"},
+    ".secrets": { type: "text", content: "[ACCESS DENIED]"},
+    ".archive": { type: "text", content: "Old project files"},
+    ".projects": { type: "window", target: "project"},
+    ".welcome": { type: "window", target: "welcome"}
 }
 
 function processCommand(command) {
@@ -192,18 +194,37 @@ function processCommand(command) {
 
     switch (cmd) {
         case "ls":
-        case "dir":
             output = Object.keys(fileSystem).join("\n")
             break
         case "cat":
-            if (args[1] && fileSystem[args[1]]) {
-                output = fileSystem[args[1]]
+            if (args[1]) {
+                const file = fileSystem[args[1]]
+                if (file) {
+                    output = file.type === "window"
+                        ? `[EXECUTABLE FILE] Run with: run ${args[1]}`
+                        : file.content
+                } else {
+                    output = `File not found ${args[1]}`
+                }
             } else {
-                output = "File not found"
+                output = "Usage: cat [filename]"
+            }
+            break
+        case "run":
+            if (args[1]) {
+                output = executeFile(args[1])
+            } else {
+                output = "Usage: run [filename]"
             }
             break
         case "help":
-            output = "Available commands:\nls = list files\ncat [file] - view file\nclear - clear terminal"
+            output = `Available Commands:
+ls              - list files
+cat [file]      - view file contents
+run [file]      - execute a window file
+clear           - clear terminal screen
+help            - show this help message
+            `
             break
         case "clear":
             terminalOutput.innerHTML = ""
@@ -214,6 +235,27 @@ function processCommand(command) {
 
     terminalOutput.innerHTML += `$ ${command}\n${output}\n\n`
     terminalOutput.scrollTop = terminalOutput.scrollHeight
+}
+function executeFile(filename) {
+    if (!fileSystem[filename]) {
+        return `Error: File not found ${filename}`
+    }
+
+    const file = fileSystem[filename]
+
+    if (file.type === "window") {
+        // Open an existing window
+        const windowElement = document.getElementById(file.target)
+        if (windowElement) {
+            openWindow(windowElement)
+            return `Opened ${file.target} window`
+        }
+        return `Error: Window ${file.target} not found`
+    } else if (file.type === "text") {
+        return file.content
+    }
+
+    return "Error: Unknown file type"
 }
 
 terminalInput.addEventListener("keypress", (e) => {

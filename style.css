@@ -449,6 +449,7 @@ button {
 /* Terminal Window */
 #terminal {
   display: none;
+  width: 500px;
 }
 
 .terminal-container {
