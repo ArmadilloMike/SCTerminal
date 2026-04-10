@@ -84,10 +84,10 @@ function closeWindow(element) {
 let biggestIndex;
 
 function openWindow(element) {
-    if (element.id === "welcome" || element.id === "report" || element.id === "terminal") {
-        element.style.display = element.dataset.prevDisplay || "block";
-    } else {
+    if (element.id === "quote" || element.id === "edd" || element.id === "orientation" || element.id === "project" || element.id === "anomaly" || element.id === "logistics") {
         element.style.display = "flex";
+    } else {
+        element.style.display = element.dataset.prevDisplay || "block";
     }
 
     biggestIndex++;
@@ -178,14 +178,74 @@ const terminalOutput = document.getElementById("terminalOutput")
 const terminalInput = document.getElementById("terminalInput")
 
 const fileSystem = {
-    ".hidden": { type: "text", content: "This is a hidden directory"},
-    ".config": { type: "text", content: "Configuration files"},
-    ".secrets": { type: "text", content: "[ACCESS DENIED]"},
-    ".archive": { type: "text", content: "Old project files"},
-    ".projects": { type: "window", target: "project"},
-    ".welcome": { type: "window", target: "welcome"}
+    ".hidden": { 
+        type: "text",
+        content: "This is a hidden directory"
+    },
+    ".config": { 
+        type: "text",
+        content: "Configuration files"
+    },
+    ".secrets": { 
+        type: "text",
+        content: "Full list of Solari Co`s Secrets"
+    },
+    ".archive": { 
+        type: "text",
+        content: "Old project files"
+    },
+    ".system_log": { 
+        type: "dynamic", 
+        title: "SYSTEM LOGS",
+        content: "[2026-04-08 15:23:01] System initialized\n[2026-04-08 15:24:15] All subsystems nominal\n[2026-04-08 15:25:42] Cache optimization complete\n[2026-04-08 15:26:08] Security protocols active"
+    },
+    ".welcome": { 
+        type: "window", 
+        target: "welcome"
+    }
 }
 
+function createDynamicWindow(filename, title, content) {
+    // create a unique window id
+    const windowId = `dynamic_${filename.replace(/[^a-z0-9]/gi, '')}`
+
+    if (document.getElementById(windowId)) {
+        const existing = document.getElementById(windowId)
+        openWindow(existing)
+        return `Window ${filename} already open`
+    }
+
+    const newWindow = document.createElement("div")
+    newWindow.className = "window"
+    newWindow.id = windowId
+    newWindow.style.display = "block"
+    newWindow.style.position = "absolute"
+    newWindow.style.top = "200px"
+    newWindow.style.left = "200px"
+    // newWindow.style.transform = "translate(-50%, -50%)"
+    newWindow.style.transform = "none"
+    newWindow.style.zIndex = biggestIndex + 1
+
+    newWindow.innerHTML = `
+        <div id="${windowId}header" class="header">
+            <p>${title}</p>
+            <p style="cursor: pointer;" id="${windowId}close">[X]</p>
+        </div>
+        <div style="padding: 12px; overflow-y: auto; white-space: pre-wrap; height: 400px; font-size: 12px">
+            ${content.replace(/\n/g, '<br>')}
+        </div>
+    `
+
+    document.body.appendChild(newWindow)
+
+    initializeWindow(windowId)
+
+    biggestIndex++
+    newWindow.style.zIndex = biggestIndex
+    topBar.style.zIndex = biggestIndex + 1
+
+    return `Executed ${filename} - window opened`
+}
 function processCommand(command) {
     const args = command.trim().split(" ")
     const cmd = args[0]
@@ -200,9 +260,11 @@ function processCommand(command) {
             if (args[1]) {
                 const file = fileSystem[args[1]]
                 if (file) {
-                    output = file.type === "window"
-                        ? `[EXECUTABLE FILE] Run with: run ${args[1]}`
-                        : file.content
+                    if (file.type === "dynamic" || file.type === "window") {
+                        output = `[EXECUTABLE] - Use 'run ${args[1]}' to execute`
+                    } else {
+                        output = file.content
+                    }
                 } else {
                     output = `File not found ${args[1]}`
                 }
@@ -253,9 +315,9 @@ function executeFile(filename) {
         return `Error: Window ${file.target} not found`
     } else if (file.type === "text") {
         return file.content
+    } else if (file.type === "dynamic") {
+        createDynamicWindow(filename, file.title, file.content)
     }
-
-    return "Error: Unknown file type"
 }
 
 terminalInput.addEventListener("keypress", (e) => {
@@ -273,13 +335,17 @@ terminalInput.addEventListener("keypress", (e) => {
 function makeClosable(element) {
     var openButton = document.querySelector("#" + element.id +"open")
     var closeButton = document.querySelector("#" + element.id +"close")
-
-    closeButton.addEventListener("click", function () {
-        closeWindow(element)
-    })
-    openButton.addEventListener("click", function () {
-        openWindow(element)
-    })
+    
+    if (closeButton) {
+        closeButton.addEventListener("click", function () {
+            closeWindow(element)
+        })
+    }
+    if (openButton) {
+        openButton.addEventListener("click", function () {
+            openWindow(element)
+        })
+    }
 }
 function initializeWindow(element) {
     var screen = document.querySelector("#" + element)
