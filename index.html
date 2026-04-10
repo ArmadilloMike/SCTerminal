@@ -4247,6 +4247,20 @@
             </div>
         </div>
     </div>
+    <div id="terminal" class="window">
+        <div id="terminalheader" class="header">
+            <p>terminal window</p>
+            <p style="cursor: pointer;" id="terminalclose">[X]</p>
+        </div>
+        
+        <div class="terminal-container">
+            <div id="terminalOutput" class="terminal-output"></div>
+            <div class="terminal-input-line">
+                <span>$  </span>
+                <input type="text" id="terminalInput" class="terminal-input" placeholder="Enter command...">
+            </div>
+        </div>
+    </div>
     
     <div class="appgrid">
         <div class="appicon" id="welcomeopen">
@@ -4280,6 +4294,10 @@
         <div class="appicon" id="logisticsopen">
             <img src="solarilogo.svg" alt="Solari Co. Logo">
             <p style="cursor: pointer">Base Logistics</p>
+        </div>
+        <div class="appicon" id="terminalopen">
+            <img src="solarilogo.svg" alt="Solari Co. Logo">
+            <p style="cursor: pointer">Terminal</p>
         </div>
     </div>
     <script src="script.js" defer></script>

@@ -84,10 +84,10 @@ function closeWindow(element) {
 let biggestIndex;
 
 function openWindow(element) {
-    if (element.id === "quote" || element.id === "edd" || element.id === "orientation" || element.id === "project" || element.id === "anomaly" || element.id === "logistics") {
-        element.style.display = "flex";
-    } else {
+    if (element.id === "welcome" || element.id === "report" || element.id === "terminal") {
         element.style.display = element.dataset.prevDisplay || "block";
+    } else {
+        element.style.display = "flex";
     }
 
     biggestIndex++;
@@ -173,6 +173,59 @@ document.getElementById('reportOpenFile').addEventListener("change", function (e
     }
 })
 
+// terminal window
+const terminalOutput = document.getElementById("terminalOutput")
+const terminalInput = document.getElementById("terminalInput")
+
+const fileSystem = {
+    ".hidden": "This is a hidden directory",
+    ".config": "Configuration files",
+    ".secrets": "[ACCESS DENIED]",
+    ".archive": "Old project files",
+}
+
+function processCommand(command) {
+    const args = command.trim().split(" ")
+    const cmd = args[0]
+
+    let output = ""
+
+    switch (cmd) {
+        case "ls":
+        case "dir":
+            output = Object.keys(fileSystem).join("\n")
+            break
+        case "cat":
+            if (args[1] && fileSystem[args[1]]) {
+                output = fileSystem[args[1]]
+            } else {
+                output = "File not found"
+            }
+            break
+        case "help":
+            output = "Available commands:\nls = list files\ncat [file] - view file\nclear - clear terminal"
+            break
+        case "clear":
+            terminalOutput.innerHTML = ""
+            return
+        default:
+            output = `Command not found ${cmd}`
+    }
+
+    terminalOutput.innerHTML += `$ ${command}\n${output}\n\n`
+    terminalOutput.scrollTop = terminalOutput.scrollHeight
+}
+
+terminalInput.addEventListener("keypress", (e) => {
+    if (e.key === "Enter") {
+        const command = terminalInput.value
+        if (command) {
+            processCommand(command)
+            terminalInput.value = ""
+        }
+    }
+})
+
 
 // helper functions
 function makeClosable(element) {
@@ -239,6 +292,7 @@ initializeWindow("orientation")
 initializeWindow("project")
 initializeWindow("anomaly")
 initializeWindow("logistics")
+initializeWindow("terminal")
 
 setupSidebarFilters(".quote-filter", ".quote-group", true)
 setupSidebarFilters(".edd-filter", ".edd-group", false)
